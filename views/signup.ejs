@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | Auth System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <div class="content-box">
+      <h1>Sign Up</h1>
+      
+      <%- include('partials/messages') %>
+      
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" value="<%= typeof age != 'undefined' ? age : '' %>" min="13" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+      
+      <div class="social-login">
+        <p>Or sign up with:</p>
+        <div class="social-buttons">
+          <a href="/auth/facebook" class="btn btn-facebook">Facebook</a>
+          <a href="/auth/google" class="btn btn-google">Google</a>
+          <a href="/auth/twitter" class="btn btn-twitter">Twitter</a>
+          <a href="/auth/linkedin" class="btn btn-linkedin">LinkedIn</a>
+        </div>
+      </div>
+      
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | Auth System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <div class="content-box">
+      <h1>Profile</h1>
+      
+      <%- include('partials/messages') %>
+      
+      <div class="profile-info">
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Age:</strong> <%= user.age %></p>
+        <p><strong>Joined:</strong> <%= user.createdAt.toDateString() %></p>
+        <p><strong>Connected Accounts:</strong>
+          <ul>
+            <% if (user.facebookId) { %><li>Facebook</li><% } %>
+            <% if (user.googleId) { %><li>Google</li><% } %>
+            <% if (user.twitterId) { %><li>Twitter</li><% } %>
+            <% if (user.linkedinId) { %><li>LinkedIn</li><% } %>
+            <% if (!user.facebookId && !user.googleId && !user.twitterId && !user.linkedinId) { %>
+              <li>None</li>
+            <% } %>
+          </ul>
+        </p>
+      </div>
+      
+      <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
